@@ -40,4 +40,4 @@ name eq "남궁성"=${name eq "남궁성"} <br>
 name ne "남궁성"=${name ne "남궁성"} <br>  
 name.equals("남궁성")=${name.equals("남궁성")} <br>   
 </body>
-</html>
+</html> 
