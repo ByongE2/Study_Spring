@@ -22,6 +22,7 @@ public class RegisterController {
 		return "registerForm"; // = WEB-INF/views/registerForm.jsp
 	}
 
+	
 	//	@RequestMapping(value="/register/save", method=RequestMethod.POST) // get방식은 안되게 한다.
 	@PostMapping("/register/save") // STS 4.3 부터 사용가능.
 	public String save(User user, Model m) throws Exception {
