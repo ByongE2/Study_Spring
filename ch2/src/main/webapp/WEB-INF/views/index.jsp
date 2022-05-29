@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page session="false" %> <!-- 세션을 "생성"하지 않겠다. -->
 <c:set var="loginOutlink" value="${sessionScope.id == null ? '/login/login' : '/login/logout'}"/>
 <c:set var="loginOut" value="${sessionScope.id == null ? 'Login' : 'Logout'}"/>
 

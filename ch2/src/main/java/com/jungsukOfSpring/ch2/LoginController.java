@@ -33,7 +33,8 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public String login(String id, String pwd, boolean rememberId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String login(String id, String pwd, String toURL, boolean rememberId, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		System.out.println("id : "+id);
 //		System.out.println("pwd : "+pwd);
 //		System.out.println("rememberId : "+rememberId); // String 일땐 값이 On으로 찍힌다.(체크박스 체크된거)
@@ -64,8 +65,9 @@ public class LoginController {
 			cookie.setMaxAge(0); 		// 쿠키 유효기간.
 			response.addCookie(cookie);		//매개변수 response 만들어주고.
 		}
-		//		3.홈으로 이동
-		return "redirect:/";  // 홈으로 이동. > Spring 기본 home 고쳐줘야한다.
+		//		3.홈으로 이동 > 게시판 누른채로 왔을 때는(toURL있을 때는) > 게시판 가게끔.
+		toURL = toURL==null || toURL.equals("") ? "/" : toURL; // toURL 값이 제대로안오면 홈으로 가게끔.
+		return "redirect:" + toURL;  // 홈으로 이동. > Spring 기본 home 고쳐줘야한다.
 	}//login 
 	// 매개변수 검사 해줘야하는데 여기선 간단히 pass
 	private boolean loginCheck(String id, String pwd) {
