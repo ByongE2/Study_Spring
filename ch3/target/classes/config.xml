@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-	
-	<bean id="engine" class="com.fastcampus.ch3.Engine"/>
-	<bean id="door" class="com.fastcampus.ch3.Door" scope="prototype"/> <!-- getBean 할 때마다 새로운 객체 만들고싶을 때 -->
-	<!-- scope="singleton" 생랻되어있다~ 써도되고 안써도되고~ -->
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		<!-- component scanning -->
+	<context:component-scan base-package="com.fastcampus.ch3">
+		<context:exclude-filter type="regex" expression="com.fastcampus.ch3.diCopy*.*"/>
+	</context:component-scan>
+	<!-- @Autowried 쓰려면, 있어야하지만. 여기서는 context:component-scan가 자동등록해줘서 사실 생략가능. -->
+	<context:annotation-config/>
+		
 
 </beans>

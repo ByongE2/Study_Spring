@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="car" class="com.fastcampus.ch3.Car">
+		<constructor-arg name="color" value="red"/>
+		<constructor-arg name="oil" value="100"/> <!--형변환 알아서 해준다  -->
+		<constructor-arg name="engine" ref="engine"/>
+		<constructor-arg name="doors">
+			<array value-type="com.fastcampus.ch3.Door">
+				<ref bean="door"/>
+				<ref bean="door"/>
+			</array>
+		</constructor-arg>
+	</bean>
+
+	<bean id="engine" class="com.fastcampus.ch3.Engine"/>
+	<bean id="door" class="com.fastcampus.ch3.Door" scope="prototype"/> <!-- getBean 할 때마다 새로운 객체 만들고싶을 때 -->
+	<!-- scope="singleton" 생랻되어있다~ 써도되고 안써도되고~ -->
+
+</beans>
