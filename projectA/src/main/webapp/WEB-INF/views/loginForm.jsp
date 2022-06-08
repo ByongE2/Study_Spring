@@ -18,16 +18,14 @@
             height:500px;
             display : flex;
             flex-direction: column;
-            align-items:center;
+            align-items:baseline;
             position : absolute;
-            top:50%;
+            top:30%;
             left:50%;
-            transform: translate(-50%, -50%) ;
-            border: 1px solid rgb(89,117,196);
-            border-radius: 10px;
+            transform: translate( -50%, -50%) ;
         }
         input[type='text'], input[type='password'] {
-            width: 300px;
+            width: 250px;
             height: 40px;
             border : 1px solid rgb(89,117,196);
             border-radius:5px;
@@ -35,17 +33,17 @@
             margin-bottom: 10px;
         }
         button {
-            background-color: rgb(89,117,196);
+            background-color: black;
             color : white;
-            width:300px;
-            height:50px;
-            font-size: 17px;
+            width:250px;
+            height:40px;
+            font-size: 15px;
             border : none;
             border-radius: 5px;
             margin : 20px 0 30px 0;
         }
         #title {
-            font-size : 50px;
+            font-size : 20px;
             margin: 40px 0 30px 0;
         }
         #msg {
@@ -59,21 +57,24 @@
 </head>
 <body>
     <form action="<c:url value='/login2/login'/>" method="post" onsubmit="return formCheck(this);">
-        <h3 id="title">Login</h3>
+        <h3 id="title">Log in</h3>
         <div id="msg">
 	    <c:if test="${not empty param.msg}">
 		<i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>            
 	    </c:if>        
 	</div>
-        <input type="text" name="id" value="${cookie.id.value}" placeholder="이메일 입력" autofocus>
-        <input type="password" name="pwd" placeholder="비밀번호">
+        <input type="text" name="id" value="${cookie.id.value}" placeholder="id" autofocus>
+        <input type="password" name="pwd" placeholder="Password">
         <input type="hidden" name="toURL" value="${param.toURL}">
-        <button>로그인</button>
+        <button>Log in</button>
+            <div class="naver "><a href="#none" onclick="MemberAction.snsLogin('naver', '%2Findex.html')">NAVER Login</a></div>
+            <div class="kakao "><a href="#none" onclick="MemberAction.snsLogin('kakao', '%2Findex.html')">KAKAO Login</a></div><br>
         <div>
-            <label><input type="checkbox" name="rememberId" ${empty cookie.id.value ? "" : "checked"}> 아이디 기억</label> |
-            <a href="">비밀번호 찾기</a> |
-            <a href="">회원가입</a>
-        </div>
+            <input type="checkbox" name="rememberId" ${empty cookie.id.value ? "" : "checked"}> 아이디 기억<br>
+            <a href="#none">Search id</a><br>
+            <a href="#none">Search password</a>
+        </div>    
+            <button>Register</button>
         <script>
             function formCheck(frm) {
                  let msg ='';
