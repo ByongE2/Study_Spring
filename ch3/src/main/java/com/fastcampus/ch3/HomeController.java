@@ -14,7 +14,7 @@ import org.springframework.web.context.support.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-@Controller
+//@Controller
 public class HomeController {
 	//Servlet AC 접근하는법
 	@Autowired
