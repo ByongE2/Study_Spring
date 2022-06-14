@@ -63,7 +63,7 @@
 		<i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>            
 	    </c:if>        
 	</div>
-        <input type="text" name="id" value="${cookie.id.value}" placeholder="id" autofocus>
+        <input type="text" name="id" value="${cookie.id.value}" placeholder="id" autofocus="autofocus" borde>
         <input type="password" name="pwd" placeholder="Password">
         <input type="hidden" name="toURL" value="${param.toURL}">
         <button>Log in</button>
