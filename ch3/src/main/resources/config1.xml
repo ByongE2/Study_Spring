@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="car" class="com.fastcampus.ch3.Car">
+	<bean id="car" class="com.fastcampus.ch3.Car"> 
 		<constructor-arg name="color" value="red"/>
 		<constructor-arg name="oil" value="100"/> <!--형변환 알아서 해준다  -->
 		<constructor-arg name="engine" ref="engine"/>
@@ -20,3 +20,4 @@
 	<!-- scope="singleton" 생랻되어있다~ 써도되고 안써도되고~ -->
 
 </beans>
+

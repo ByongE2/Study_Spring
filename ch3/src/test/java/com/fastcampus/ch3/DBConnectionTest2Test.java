@@ -35,6 +35,7 @@ public class DBConnectionTest2Test {
        Connection conn = ds.getConnection(); // 데이터베이스의 연결을 얻는다.
 
        System.out.println("conn = " + conn);
-       assertTrue(conn!=null); //assert 여러 종류 중 assertTrue는 조건식이 참이면 통과.
+       assertTrue(conn==null); //assert 여러 종류 중 assertTrue는 조건식이 참이면 통과.
 	}//main
 }
+

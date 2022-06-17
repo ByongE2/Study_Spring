@@ -1,0 +1,92 @@
+@charset "UTF-8";
+body{
+	background-color: #dad295;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul, ol,li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none
+}
+div{
+	display: block;
+}
+.log{
+	width: 150px;
+	height: 120px;
+}
+.sidebar{
+	width: 120px;
+	left: 20px;
+	position: fixed;
+	top: 0;
+	line-height: 2em;
+}
+.list1{
+	margin: 40px 0 70px;
+	
+}
+.list1 a{
+	margin: 3px 0 0 0;
+	color: gray;
+}
+a:hover{
+	color: black;
+	
+}
+a:active{
+	background-color: white;
+}
+
+
+.list2 a{
+	color: gray;	
+}
+a:hover {
+	color: black;
+}
+
+.rightbar{
+	position: fixed;
+	height: 100%;
+	text-align: right;
+	padding: 0 10px 0 0;
+	width: 120px;
+	right: 20px;
+	line-height: 2em;
+}
+.btn button {
+	margin: 30px 15px 50px 0;
+	color:white;
+	height: 40px;
+	width: 100px;
+	border: none;
+	font-size: 0.8em;
+	background: #8b0000;
+	border-radius: 20%;
+	cursor: pointer;
+}
+button:hover {
+	color: #f0e68c;
+	background: #ff69b4;
+}
+.list3{
+	margin: 40px 0 70px;
+}
+
+.list3 a{
+	color: gray;	
+}
+a:hover {
+	color: black;
+}
+a:active{
+	background-color: white;
+}
+

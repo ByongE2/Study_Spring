@@ -116,8 +116,8 @@ class AppContext{
 public class Main4 {
 
 	public static void main (String[] args) throws Exception {
-		AppContext ac = new AppContext();
-		Car car = (Car)ac.getBean("car");
+		AppContext ac = new AppContext(); 
+		Car car = (Car)ac.getBean("car"); 
 		Engine engine = (Engine)ac.getBean("engine");
 		Door door = (Door)ac.getBean(Door.class); //byType으로 객체를 검색
 
