@@ -1,3 +1,4 @@
+package com.fastcampus.ch4.controller;
 //package com.fastcampus.ch4.domain;
 //
 //import org.springframework.web.util.UriComponentsBuilder;
