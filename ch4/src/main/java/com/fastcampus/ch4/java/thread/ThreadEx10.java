@@ -1,52 +1,54 @@
 package com.fastcampus.ch4.java.thread;
 
-import java.util.*;
+class ThreadEx17 {
+	public static void main(String args[]) {
+		ThreadEx17_1 th1 = new ThreadEx17_1("*");
+		ThreadEx17_1 th2 = new ThreadEx17_1("**");
+		ThreadEx17_1 th3 = new ThreadEx17_1("***");
+		th1.start();
+		th2.start();
+		th3.start();
 
-class ThreadEx11 {
-	public static void main(String args[]) throws Exception {
-		ThreadEx11_1 t1 = new ThreadEx11_1("Thread1");
-		ThreadEx11_2 t2 = new ThreadEx11_2("Thread2");
-		t1.start();
-		t2.start();
-	}
-}
-
-class ThreadEx11_1 extends Thread {
-	ThreadEx11_1(String name) {
-		super(name);
-	}
-
-	public void run() {
 		try {
-			sleep(5 * 1000);	// 5ÃÊ µ¿¾È ±â´Ù¸°´Ù.
-		} catch(InterruptedException e) {}
+			Thread.sleep(2000);
+			th1.suspend();		
+			Thread.sleep(2000);
+			th2.suspend();
+			Thread.sleep(3000);
+			th1.resume();
+			Thread.sleep(3000);
+			th1.stop();
+			th2.stop();
+			Thread.sleep(2000);
+			th3.stop();
+		} catch (InterruptedException e) {}
 	}
 }
 
-class ThreadEx11_2 extends Thread {
-	ThreadEx11_2(String name) {
-		super(name);
+class ThreadEx17_1 implements Runnable {
+	boolean suspended = false;
+	boolean stopped   = false;
+
+	Thread th;
+
+	ThreadEx17_1(String name) {
+		th = new Thread(this, name); // Thread(Runnable r, String name)
 	}
 
 	public void run() {
-		Map map = getAllStackTraces();
-		Iterator it = map.keySet().iterator();
-
-		int x=0;
-		while(it.hasNext()) {
-			Object obj = it.next();
-			Thread t = (Thread)obj;
-			StackTraceElement[] ste = (StackTraceElement[])(map.get(obj));
-
-			System.out.println( "["+ ++x + "] name : " + t.getName() 
-                                      + ", group : "  + t.getThreadGroup().getName() 
-                                      + ", daemon : " + t.isDaemon());
-
-			for(int i=0; i < ste.length; i++) {
-				System.out.println(ste[i]);
+		while(!stopped) {
+			if(!suspended) {
+               System.out.println(Thread.currentThread().getName());
+				try {
+					Thread.sleep(1000);
+				} catch(InterruptedException e) {}			
 			}
-
-			System.out.println();
 		}
+		System.out.println(Thread.currentThread().getName() + " - stopped");
 	}
+
+	public void suspend() { suspended = true;  }
+	public void resume()  { suspended = false; }
+	public void stop()    { stopped   = true;  }
+	public void start()   { th.start();        }
 }
