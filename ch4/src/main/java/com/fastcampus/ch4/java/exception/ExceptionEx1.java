@@ -1,16 +1,16 @@
 package com.fastcampus.ch4.java.exception;
 
-class ExceptionEx5 {
+class ExceptionEx9 {
 	public static void main(String args[]) {
-			System.out.println(1);			
-			System.out.println(2);
-			try {
-				System.out.println(3);
-				System.out.println(0/0);	
-				System.out.println(4); 	// 실행되지 않는다.
-			} catch (ArithmeticException ae)	{
-				System.out.println(5);
-			}	// try-catch의 끝
-			System.out.println(6);
-	}	// main메서드의 끝
+		try {
+			Exception e = new Exception("고의로 발생시켰음.");
+			throw e;	 // 예외를 발생시킴
+		//  throw new Exception("고의로 발생시켰음.");  
+
+		} catch (Exception e)	{
+			System.out.println("에러 메시지 : " + e.getMessage());
+		     e.printStackTrace();
+		}
+		System.out.println("프로그램이 정상 종료되었음.");
+	}
 }
