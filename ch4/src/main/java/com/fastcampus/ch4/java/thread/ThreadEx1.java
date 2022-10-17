@@ -1,36 +1,31 @@
 package com.fastcampus.ch4.java.thread;
 
-class ThreadEx9 {
-	public static void main(String args[]) throws Exception {
-		ThreadGroup main = Thread.currentThread().getThreadGroup();
-		ThreadGroup grp1 = new ThreadGroup("Group1");
-		ThreadGroup grp2 = new ThreadGroup("Group2");
+class ArrayEx10 {
+	public static void main(String[] args) {
+		int[] numArr = new int[10];
 
-		// ThreadGroup(ThreadGroup parent, String name) 
-		ThreadGroup subGrp1 = new ThreadGroup(grp1,"SubGroup1"); 
+		for (int i=0; i < numArr.length ; i++ ) {
+			System.out.print(numArr[i] = (int)(Math.random() * 10));
+		}
+		System.out.println();
 
-		grp1.setMaxPriority(3);	// 쓰레드 그룹 grp1의 최대우선순위를 3으로 변경.
-		
-		Runnable r = new Runnable() {
-			public void run() {
-				try { 
-					Thread.sleep(1000); // 쓰레드를 1초간 멈추게 한다.
-				} catch(InterruptedException e) {}
-			}	
-		};
+		for (int i=0; i < numArr.length-1 ; i++ ) {
+			boolean changed = false;	// 자리바꿈이 발생했는지를 체크한다.
 
-        // Thread(ThreadGroup tg, Runnable r, String name)
-		Thread th1 = new Thread(grp1,     r, "th1"); 
-		Thread th2 = new Thread(subGrp1,  r, "th2");
-		Thread th3 = new Thread(grp2,     r, "th3");   
+			for (int j=0; j < numArr.length-1-i ;j++) {
+				if(numArr[j] > numArr[j+1]) { // 옆의 값이 작으면 서로 바꾼다.
+					int temp = numArr[j];
+					numArr[j] = numArr[j+1];
+					numArr[j+1] = temp;
+					changed = true;	// 자리바꿈이 발생했으니 changed를 true로.
+				}
+			} // end for j
 
-		th1.start();
-		th2.start();
-		th3.start();
+			if (!changed) break;	// 자리바꿈이 없으면 반복문을 벗어난다.
 
-		System.out.println(">>List of ThreadGroup : "+ main.getName() 
-                          +", Active ThreadGroup: " + main.activeGroupCount()
-                          +", Active Thread: "      + main.activeCount());
-		main.list();
-	}
+			for(int k=0; k<numArr.length;k++)
+				System.out.print(numArr[k]); // 정렬된 결과를 출력한다.
+			System.out.println();
+		} // end for i
+	} // main의 끝
 }
