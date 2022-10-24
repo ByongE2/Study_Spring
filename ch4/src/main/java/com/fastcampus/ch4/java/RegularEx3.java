@@ -1,29 +1,19 @@
 package com.fastcampus.ch4.java;
 
-import java.util.regex.*;	// Pattern과 Matcher가 속한 패키지
+import java.util.regex.*;	// Pattern°ú Matcher°¡ ¼ÓÇÑ ÆÐÅ°Áö
 
-class RegularEx4 {
+class RegularEx3{
 	public static void main(String[] args) {
-		String source  = "A broken hand works, but not a broken heart.";
-		String pattern = "broken";
-
-		StringBuffer sb = new StringBuffer();
+		String source  = "HP:011-1111-1111, HOME:02-999-9999 ";
+		String pattern = "(0\\d{1,2})-(\\d{3,4})-(\\d{4})";
 
 		Pattern p = Pattern.compile(pattern);
 		Matcher m = p.matcher(source);
-		System.out.println("source:"+source);
 
 		int i=0;
 
 		while(m.find()) {
-			System.out.println(++i + "번째 매칭:" + m.start() + "~"+ m.end());
-
-            // broken을 drunken으로 치환하여 sb에 저장한다.
-			m.appendReplacement(sb, "drunken");  
+			System.out.println( ++i + ": " + m.group() + " -> "+ m.group(1) +", "+ m.group(2)+", "+ m.group(3));		
 		}
-
-		m.appendTail(sb);
-		System.out.println("Replacement count : " + i);
-		System.out.println("result:"+sb.toString());
-	}
+	} // mainÀÇ ³¡
 }
